@@ -34,4 +34,5 @@ public class UserFluent
     public Gender Gender { get; set; }
     public NationalCode NationalCode { get; set; }
     public FullName FullName { get; set; }
+    public string Password { get; set; }
 }

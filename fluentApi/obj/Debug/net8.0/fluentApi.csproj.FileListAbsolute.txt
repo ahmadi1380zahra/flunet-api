@@ -128,3 +128,6 @@ C:\Users\Markazi.co\RiderProjects\fluentApi\fluentApi\obj\Debug\net8.0\refint\fl
 C:\Users\Markazi.co\RiderProjects\fluentApi\fluentApi\obj\Debug\net8.0\fluentApi.pdb
 C:\Users\Markazi.co\RiderProjects\fluentApi\fluentApi\obj\Debug\net8.0\fluentApi.genruntimeconfig.cache
 C:\Users\Markazi.co\RiderProjects\fluentApi\fluentApi\obj\Debug\net8.0\ref\fluentApi.dll
+C:\Users\Markazi.co\RiderProjects\fluentApi\fluentApi\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\Markazi.co\RiderProjects\fluentApi\fluentApi\obj\Debug\net8.0\fluentApi.sourcelink.json
+C:\Users\Markazi.co\RiderProjects\fluentApi\fluentApi\bin\Debug\net8.0\System.Json.dll

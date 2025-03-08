@@ -1,10 +1,25 @@
-﻿using System.Net.Http.Json;
+﻿using System.Linq.Expressions;
+using System.Net.Http.Json;
 using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Newtonsoft.Json;
 
 namespace fluentApi.Configs;
+
+public class EncryptedConvertor : ValueConverter<string, string>
+{
+    public EncryptedConvertor(
+        ConverterMappingHints? mappingHints = default) : base(EncryptExpr,
+        DycryptExpr,
+        mappingHints)
+    {
+    }
+
+    private static Expression<Func<string, string>> EncryptExpr => x => new string(x.Reverse().ToArray());
+    private static Expression<Func<string, string>> DycryptExpr => x => new string(x.Reverse().ToArray());
+}
 
 public class UserFluentConfig : IEntityTypeConfiguration<UserFluent>
 {
@@ -20,8 +35,8 @@ public class UserFluentConfig : IEntityTypeConfiguration<UserFluent>
         var valueConvertor = new ValueConverter<NationalCode, string>
             (n => n.PersonalCode, s => new NationalCode(s));
         d.Property(d => d.NationalCode).HasConversion(valueConvertor);
-
         d.Property(c => c.FullName).HasConversion(f => JsonConvert.SerializeObject(f),
-            s => JsonConvert.DiserializeObject<FullName>(s));
+            s => JsonConvert.DeserializeObject<FullName>(s));
+        d.Property(p => p.Password).HasConversion(new EncryptedConvertor());
     }
 }
